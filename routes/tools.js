@@ -12,22 +12,14 @@ router.get('/latency', TokenController.tokenValid, (req, res) => {
   ping.promise.probe('google.com', {
     timeout: 5
   })
-    .then((pingInfo) => {
-      console.log(pingInfo)
+    .then((pingInfo) => {      
       respData.responce = pingInfo.avg
       res.json(respData)
     })
     .catch((e) => {
-      console.log(e)
-      if (e.noaccess) {
-        respData.error = 'no access'
-        res.status(403)
-        res.json(respData)
-      }
-      else {
-        respData.error = e
-        res.json(e)
-      }
+      respData.error = 'ping to support on current OS'
+      res.json(e)
+      
     })
 })
 
