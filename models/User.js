@@ -22,7 +22,6 @@ let UserSchema = new Schema({
 })
 
 UserSchema.pre('save', function(next) {
-  console.log(this)
   if(!this.isModified('password')) return next()
 
   bcrypt.hash(this.password, 10)
