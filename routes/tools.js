@@ -17,7 +17,7 @@ router.get('/latency', TokenController.tokenValid, (req, res) => {
       res.json(respData)
     })
     .catch((e) => {
-      respData.error = 'ping to support on current OS'
+      respData.responce = 'ping to support on current OS'
       res.json(respData)
       
     })
