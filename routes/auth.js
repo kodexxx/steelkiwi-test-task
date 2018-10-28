@@ -86,11 +86,9 @@ router.get('/info', TokenController.tokenValid, (req, res) => {
     .then(info => {
       respData.responce = { id: info.id, id_type: info.id_type }
       res.json(respData)
-      return
     })
     .catch(e => {
       res.json(e)
-      return
     })
 })
 
@@ -108,12 +106,10 @@ router.get('/logout', TokenController.tokenValid, (req, res) => {
           success: true
         }
         res.json(respData)
-        return
       })
       .catch(e => {
         respData.error = e
         res.json(respData)
-        return
       })
   }
   else {
@@ -123,12 +119,10 @@ router.get('/logout', TokenController.tokenValid, (req, res) => {
           success: true
         }
         res.json(respData)
-        return
       })
       .catch(e => {
         respData.error = e
         res.json(respData)
-        return
       })
   }
 })
