@@ -8,6 +8,7 @@ const TokenController = require('../controllers/Token')
 router.get('/latency', TokenController.tokenValid, (req, res) => {
   let respData = { error: null, responce: {} }
 
+  console.log('start ping')
   ping.promise.probe('google.com', {
     timeout: 5
   })
@@ -17,6 +18,7 @@ router.get('/latency', TokenController.tokenValid, (req, res) => {
       res.json(respData)
     })
     .catch((e) => {
+      console.log(e)
       if (e.noaccess) {
         respData.error = 'no access'
         res.status(403)
