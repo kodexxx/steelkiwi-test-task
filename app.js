@@ -5,12 +5,12 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
 const mongoose = require('mongoose')
-
+const config = require('./config')
 
 const authRouter = require('./routes/auth')
 const toolsRouter = require('./routes/tools')
 
-mongoose.connect('mongodb://kodex:password123@ds141783.mlab.com:41783/heroku_rpp20sqg', { useNewUrlParser: true })
+mongoose.connect(config.mongoPath, { useNewUrlParser: true })
 mongoose.Promise = global.Promise
 
 let db = mongoose.connection

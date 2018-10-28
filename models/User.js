@@ -43,7 +43,6 @@ UserSchema.statics = {
         .then((d) => {
           if(d) resolve()
           else reject('incorect password')
-          return
         })
         .catch(e => {
           reject('incorect id')
