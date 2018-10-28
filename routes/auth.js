@@ -43,8 +43,14 @@ router.post('/signup', (req, res) => {
       res.json(respData)
     })
     .catch((e) => {
-      respData.error = e
-      res.json(respData)
+      if (e.code == 11000) {
+        respData.error = 'id is alredy taken'
+        res.json(respData)
+      }
+      else {
+        respData.error = e
+        res.json(respData)
+      }
     })
 })
 
@@ -92,7 +98,8 @@ router.get('/info', TokenController.tokenValid, (req, res) => {
 router.get('/logout', TokenController.tokenValid, (req, res) => {
   let respData = { error: null, responce: {} }
   let all = false
-  if (req.body.all == 'true') all = true
+  if (req.query.all == 'true') all = true
+  
 
   if (all) {
     TokenModel.deleteMany({ user_id: req.tokenInfo.user_id })
