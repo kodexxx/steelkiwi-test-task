@@ -13,7 +13,7 @@ router.get('/latency', TokenController.tokenValid, (req, res) => {
   })
     .then((pingInfo) => {
       respData.responce = pingInfo.avg
-      return res.json(respData)
+      return res.json(pingInfo)
     })
     .catch((e) => {
       if (e.noaccess) {
